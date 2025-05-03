@@ -1,35 +1,99 @@
-# Chat with Llama3.2
+# LocalChatGPT
 
-A simple chat interface that connects to your local Llama3.2 model running on Ollama.
+A modern chat interface that connects to your local Llama 3.2 model running on Ollama.
+
+## Features
+
+- Beautiful and responsive UI with Tailwind CSS
+- Real-time chat interface
+- Preserves conversation history
+- Multiple chat sessions
+- Clear button to start new conversations
+- Error handling and logging
+- FastAPI backend with CORS support
 
 ## Prerequisites
 
 - Python 3.8 or higher
-- Ollama running locally with Llama3.2 model
+- Node.js and npm
+- Ollama running locally with Llama 3.2 model
 - pip (Python package manager)
 
 ## Installation
 
-1. Clone this repository
-2. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Clone this repository:
+```bash
+git clone https://github.com/gvarsh123/LocalChatGPT.git
+cd LocalChatGPT
+```
+
+2. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+```
 
 ## Usage
 
-1. Make sure Ollama is running with the Llama3.2 model
-2. Run the chat interface:
-   ```bash
-   python chat_interface.py
-   ```
-3. Open your web browser and navigate to the URL shown in the terminal (usually http://localhost:7860)
-4. Start chatting with your local Llama3.2 model!
+1. Start the backend server:
+```bash
+python backend.py
+```
 
-## Features
+2. Start the frontend development server:
+```bash
+cd frontend
+npm run dev
+```
 
-- Real-time chat interface
-- Preserves conversation history
-- Clear button to start a new conversation
-- Error handling and logging
-- Beautiful and responsive UI 
+3. Open your web browser and navigate to http://localhost:5173
+
+4. Start chatting with your local Llama 3.2 model!
+
+## Project Structure
+
+```
+LocalChatGPT/
+├── backend.py          # FastAPI backend server
+├── requirements.txt    # Python dependencies
+├── frontend/          # React frontend
+│   ├── src/
+│   │   ├── components/  # React components
+│   │   ├── App.tsx     # Main application
+│   │   └── main.tsx    # Entry point
+│   └── package.json    # Node.js dependencies
+└── README.md          # This file
+```
+
+## API Documentation
+
+The backend provides a REST API for chat interactions:
+
+### POST /api/chat
+
+Send a message to the model and get a response.
+
+**Request Body:**
+```json
+{
+    "message": "string",
+    "session_id": "string"
+}
+```
+
+**Response:**
+```json
+{
+    "response": "string",
+    "session_id": "string"
+}
+```
+
+## License
+
+MIT 
